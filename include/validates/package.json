@@ -1,0 +1,5 @@
+{
+	"name" : "validates",
+	"version" : "0.0.1",
+	"main" : "./lib/validates.js"
+}

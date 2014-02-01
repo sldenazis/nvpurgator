@@ -1,0 +1,40 @@
+{
+	"name" : "example",
+	"domain" : "www.example.com",
+	"port" : 81,
+	"enabled" : true,
+	"api_key" : "fIoaeShKs78nKKjzRHaLLXTVNY6C4LkwZ9q14Xr5",
+	"servers" : [{
+		"ip" : "192.168.1.10"
+	},
+	{
+		"ip" : "192.168.1.11"
+	},
+	{
+		"ip" : "192.168.1.12"
+	},
+	{
+		"ip" : "192.168.1.13"
+	},
+	{
+		"ip" : "192.168.1.14",
+		"enabled" : false
+	},
+	{
+		"ip" : "192.168.1.15"
+	},
+	{
+		"ip" : "192.168.1.16",
+		"port" : 80
+	},
+	{
+		"ip" : "192.168.1.17",
+		"enabled" : false
+	},
+	{
+		"ip" : "192.168.1.18"
+	},
+	{
+		"ip" : "192.168.1.19"
+	}]
+}

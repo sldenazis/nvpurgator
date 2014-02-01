@@ -1,0 +1,6 @@
+{
+	"name" : "functions",
+	"version" : "0.0.1",
+	"description" : "Generic functions for app",
+	"main" : "./lib/functions.js"
+}

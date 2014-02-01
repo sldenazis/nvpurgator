@@ -1,0 +1,6 @@
+{
+	"name" : "errors",
+	"version" : "0.0.1",
+	"description" : "Modules para manejo de errores",
+	"main" : "./lib/errors.js"
+}
