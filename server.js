@@ -4,7 +4,7 @@ var error = require('./include/errors');
 var validate = require('./include/validates');
 var purge = require('./purge.js');
 // Load servers data
-var project = require('./data/project.json');
+var project = require('./conf/project.json');
 
 function serverStart(){
 
