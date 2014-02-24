@@ -60,7 +60,14 @@ function debugLog(message){
 	console.log( _colorLog( 'yellow', message ) );
 }
 
+// Devuelvo la ip del cliente
+function getClientAddress( request ){
+	return (request.headers['x-forwarded-for'] || '').split(',')[0] || request.connection.remoteAddress;
+}
+
+
 exports.info = infoLog;
 exports.error = errorLog;
 exports.warning = warningLog;
 exports.debug = debugLog;
+exports.getClient = getClientAddress;
