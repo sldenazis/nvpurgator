@@ -19,8 +19,9 @@ function purgeFileProject( project, path ){
 					method: 'PURGE'
 				};
 				/* Cantidad de intentos si falla el primer request
-				 * TODO: buscar una forma mejor para manejar los errores */
-				var retry = 5;
+				 * TODO: buscar una forma mejor para manejar los errores
+				 * FIXME: esto no anda */
+				var retry = 0;
 				_purge(request_data, retry);
 			} else {
 				funcs.info( 'The requested server \'' + server.ip + '\' has been disable by config.' );
@@ -40,9 +41,7 @@ function _purge(request_data, retry){
 		response.resume();
 	});
 
-	console.log(retry);
 	var recall = false;
-
 	recall = request.on('error', function(e) {
 		funcs.error( 'Problem with request in host ' + request_data.hostname  + ': ' + e.message);
 		return true;
