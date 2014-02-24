@@ -27,6 +27,16 @@ function validateClient( client_ip, clients_allow ){
 	return allow;
 }
 
+/* TODO: agregar la posibilidad de validar diferentes dominios */
+function validateDomain( domain, project_domain ){
+	if( domain === project_domain ){
+		return true;
+	} else {
+		return false;
+	}
+}
+
 exports.apikey = validateApiKey;
 exports.method = validateMethod;
 exports.client = validateClient;
+exports.domain = validateDomain;
