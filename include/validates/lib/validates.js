@@ -17,5 +17,16 @@ function validateMethod( method ){
 	return is_valid;
 }
 
+function validateClient( client_ip, clients_allow ){
+	var allow = false;
+	clients_allow.forEach( function( client, index ){
+		if( client.ip === client_ip ){
+			allow = true;
+		}
+	})
+	return allow;
+}
+
 exports.apikey = validateApiKey;
 exports.method = validateMethod;
+exports.client = validateClient;
