@@ -1,4 +1,11 @@
 {
 	"port" : 8000,
-	"loglevel" : "DEBUG"
+	"loglevel" : "DEBUG",
+	"clients_allow" : [{
+		"ip" : "127.0.0.1"
+	},{
+		"ip" : "192.168.1.2"
+	},{
+		"ip" : "192.168.1.3"
+	}]
 }
