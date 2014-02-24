@@ -33,6 +33,9 @@ function _purge(request_data){
 		funcs.info( 'Requesting server \'' + request_data.hostname + '\'...' );
 		funcs.info( 'STATUS: ' + response.statusCode );
 		funcs.debug( 'HEADERS: ' + JSON.stringify(response.headers) );
+		/* Para no saturar el pool de conexiones:
+		 * http://nodejs.org/api/http.html#http_class_http_clientrequest */
+		response.resume();
 	});
 
 	request.on('error', function(e) {
