@@ -1,6 +1,5 @@
 var http = require('http');
 var funcs = require('./include/functions/');
-//var error = require('./include/errors');
 var validate = require('./include/validates');
 var purge = require('./purge.js');
 // Loaf nvpurgator config
@@ -23,7 +22,6 @@ function serverStart(){
 				purge.file( project, request.url );
 
 			} else {
-				//error.print( 403, response );
 				response.writeHead(403, {
 					'Content-Type': 'text/plain'
 				});
@@ -31,7 +29,6 @@ function serverStart(){
 				funcs.info('Permission denied! Request client: ' + funcs.getClient(request) + '\n' );
 			}
 		} else {
-			//error.print( 501, response );
 			response.writeHead(501, {
 				'Content-Type': 'text/plain'
 			})
