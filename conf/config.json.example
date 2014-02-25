@@ -1,5 +1,6 @@
 {
 	"port" : 8000,
+	"__comment" : "loglevel: 0 - Only errors, 1 - Warnings, 2 - Info, 3 - Debug [default]",
 	"loglevel" : "DEBUG",
 	"clients_allow" : [{
 		"ip" : "127.0.0.1"
