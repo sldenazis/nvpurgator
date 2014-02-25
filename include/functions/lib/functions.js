@@ -34,7 +34,7 @@ function noticeLog(message){
 }
 
 function errorLog(message){
-	console.log( _colorLog('nred','[ERROR] ') + message );
+	console.log( _colorLog('red','[ERROR] ') + message );
 }
 
 function warningLog(message){
