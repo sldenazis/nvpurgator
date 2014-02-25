@@ -37,7 +37,25 @@ function validateDomain( domain, project_domains ){
 	return valid;
 }
 
+function _validatePort(port){
+	var valid = false
+	if( typeof(port) === 'number' && port > 0 ){
+		valid = true;
+	}
+	return valid;
+}
+
+function validateConfig(config){
+	var valid = true;
+	if( ! _validatePort(config.port) ){
+		console.log('Invalid port \'' + config.port + '\'.' );
+		valid = false;
+	}
+	return valid
+}
+
 exports.apikey = validateApiKey;
 exports.method = validateMethod;
 exports.client = validateClient;
 exports.domain = validateDomain;
+exports.config = validateConfig;
