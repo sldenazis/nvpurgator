@@ -1,5 +1,7 @@
 To-Do:
 
+- Validar project.json
+
 - Capturar las diferentes respuestas de los varnish (403, 501, etc) y loguear en consecuencia
 
 - Agregar opcion de reload para no reiniciar el servicio cada vez que se cambia un config
