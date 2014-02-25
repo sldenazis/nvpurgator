@@ -27,13 +27,14 @@ function validateClient( client_ip, clients_allow ){
 	return allow;
 }
 
-/* TODO: agregar la posibilidad de validar diferentes dominios */
-function validateDomain( domain, project_domain ){
-	if( domain === project_domain ){
-		return true;
-	} else {
-		return false;
-	}
+function validateDomain( domain, project_domains ){
+	var valid = false;
+	project_domains.forEach( function( dom, index ){
+		if( dom.name === domain ){
+			valid = true;
+		}
+	})
+	return valid;
 }
 
 exports.apikey = validateApiKey;
