@@ -22,7 +22,7 @@ function serverStart(){
 					response.end();
 					funcs.notice('['+ date + '] [Purge "http://' + request.headers.host + request.url + '"] from ' + client_ip + '.');
 					//funcs.logRequest(request,200);
-					purge.file( project, request.url );
+					purge.file(project,request.url,request.headers.host);
 				} else {
 					response.writeHead(406, { 'Content-Type': 'text/plain' });
 					response.end('Invalid domain "' + request.headers.host + '".\n');
