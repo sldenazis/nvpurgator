@@ -50,8 +50,8 @@ function _purge(request_data, retry){
 				_purge(request_data, retry - 1);
 			}, 1000);
 		} else {
-			funcs.error( '[' + date + '] [OH NOES! PURGE "http://' + request_data.headers.Host +
-				request_data.path + '" FAILS!] on server ' + request_data.hostname  + ': ' + e.message);
+			funcs.error( '[' + date + '] [OH NOES! PURGE "http://' + request_data.headers.Host + request_data.path +
+			'" FAILS!] on server ' + request_data.hostname + ':' + request_data.port + ' - ' + e.message);
 		}
 	});
 }
