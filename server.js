@@ -20,7 +20,7 @@ function serverStart(){
 				if ( validate.domain( request.headers.host, project.domains ) ) {
 					response.writeHead(200, { 'Content-Type': 'text/plain' });
 					response.end();
-					funcs.notice('['+ date + '] [Purge "http://' + request.headers.host + request.url + '"] from ' + client_ip + '.');
+					funcs.notice('['+ date + '] [GET "http://' + request.headers.host + request.url + '"] from ' + client_ip + '.');
 					//funcs.logRequest(request,200);
 					purge.file(project,request.url,request.headers.host);
 				} else {
