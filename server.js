@@ -15,7 +15,7 @@ function serverStart(){
 			if ( validate.client( funcs.getClient(request), config.clients_allow ) ) {
 				/* Valido el header 'Host:' */
 				if ( validate.domain( request.headers.host, project.domains ) ) {
-					funcs.info( 'Host: ' + request.headers.host + ' URL: ' + request.url + ' Method: ' + request.method + '\n' );
+					funcs.notice( 'Client: ' + funcs.getClient(request) + ' Host: ' + request.headers.host + ' URL: ' + request.url + ' Method: ' + request.method + '.' );
 
 					response.writeHead(200, { 'Content-Type': 'text/plain' });
 					response.end();
