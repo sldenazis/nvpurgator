@@ -1,10 +1,10 @@
 var http = require('http');
 var funcs = require('./include/functions/');
 
-function purgeFileProject( project, path ){
-
-	if ( project.enabled ){
-		project.servers.forEach(function( server, index ){
+function purgeFileProject(project,path,domain){
+	if( project.enabled ){
+		project.servers.forEach(function(server,index){
+			var date = funcs.getDate('%Y/%m/%d %H:%M:%S');
 			if ( typeof(server.enabled) === 'undefined' || server.enabled !== false ){
 				/* Armo el objeto para la peticion y llamo a _purge */
 				var port = project.port;
@@ -15,24 +15,25 @@ function purgeFileProject( project, path ){
 					hostname: server.ip,
 					port: port,
 					path: path,
-					headers: { 'Host' : project.domain },
+					headers: { 'Host' : domain },
 					method: 'PURGE'
 				};
 				/* Cantidad de intentos si falla el primer request. TODO: hacerlo configurable */
 				var retry = 2;
-				_purge(request_data, retry);
+				_purge(request_data,retry);
 			} else {
-				funcs.info( 'The requested server \'' + server.ip + '\' has been disable by config.' );
+				funcs.info( '[' + date + '] The requested server \'' + server.ip + '\' has been disable by config.' );
 			}
 		});
 	};
-
 };
 
 function _purge(request_data, retry){
+	var date = funcs.getDate('%Y/%m/%d %H:%M:%S');
+
 	var request = http.request( request_data, function(response){
-		funcs.info( 'Requesting server \'' + request_data.hostname + '\'...' );
-		funcs.info( 'STATUS: ' + response.statusCode );
+		funcs.notice('[' + date + '] [PURGE "http://' + request_data.headers.Host + request_data.path +
+			'"] on server ' + request_data.hostname + ':' + request_data.port + ' - ' + response.statusCode);
 		funcs.debug( 'HEADERS: ' + JSON.stringify(response.headers) );
 		/* Para no saturar el pool de conexiones:
 		 * http://nodejs.org/api/http.html#http_class_http_clientrequest */
@@ -42,13 +43,15 @@ function _purge(request_data, retry){
 	request.end();
 
 	request.on('error', function(e) {
-		funcs.error( '[' + retry + '] Problem with request in host ' + request_data.hostname  + ': ' + e.message);
 		if( retry > 0 ){
 			/* Espero un segundo para volver a realizar el request.
 			 * TODO: hacerlo configurable */
 			setTimeout(function(){
 				_purge(request_data, retry - 1);
 			}, 1000);
+		} else {
+			funcs.error( '[' + date + '] [OH NOES! PURGE "http://' + request_data.headers.Host +
+				request_data.path + '" FAILS!] on server ' + request_data.hostname  + ': ' + e.message);
 		}
 	});
 }
