@@ -32,7 +32,7 @@ function serverStart(){
 				funcs.info('Client not allowed: ' + funcs.getClient(request) + '\n' );
 			}
 		} else {
-			response.writeHead(501, {
+			response.writeHead(405, {
 				'Content-Type': 'text/plain'
 			})
 			response.end('Method not allowed.\n');
