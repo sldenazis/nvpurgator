@@ -39,7 +39,7 @@ function serverStart(){
 		}
 	}).listen( config.port );
 
-	console.log( 'Starting on ' + new Date() + '...\n\nServer running at http://127.0.0.1:8000/\n' );
+	console.log( 'Starting on ' + new Date() + '...\n\nServer running at http://127.0.0.1:' + config.port + '/\n' );
 }
 
 exports.start = serverStart;
