@@ -2,8 +2,6 @@ To-Do:
 
 - Capturar las diferentes respuestas de los varnish (403, 501, etc) y loguear en consecuencia
 
-- Manejar los niveles de logging
-
 - Agregar opcion de reload para no reiniciar el servicio cada vez que se cambia un config
 
 - ¿Habilitar/deshabilitar servidores inteligentemente en base a los errores?
