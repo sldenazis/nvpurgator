@@ -2,13 +2,9 @@ var http = require('http'),
 	funcs = require('./include/functions/'),
 	validate = require('./include/validates'),
 	purge = require('./purge.js');
-/* Load nvpurgator config */
-/* var config = require('./conf/config.json'); */
-/* Load servers data */
-/* var project = require('./conf/project.json'); */
 
 function serverStart(config,project){
-	http.createServer( function (request, response){
+	http.createServer( function (request,response){
 		var date = funcs.getDate('%Y/%m/%d %H:%M:%S');
 		var client_ip = funcs.getClient(request);
 
