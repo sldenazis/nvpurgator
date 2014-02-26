@@ -1,5 +1,8 @@
 To-Do:
 
+- Agregar soporte para recibir config.json y project.json por parametro, para poder levantar
+varias instancias sin necesidad de hacer varias instalaciones
+
 - Validar project.json
 
 - Agregar opcion de reload para no reiniciar el servicio cada vez que se cambia un config
