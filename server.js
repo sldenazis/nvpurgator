@@ -1,14 +1,10 @@
-var http = require('http');
-var funcs = require('./include/functions/');
-var validate = require('./include/validates');
-var purge = require('./purge.js');
-/* Load nvpurgator config */
-var config = require('./conf/config.json');
-/* Load servers data */
-var project = require('./conf/project.json');
+var http = require('http'),
+	funcs = require('./include/functions/'),
+	validate = require('./include/validates'),
+	purge = require('./purge.js');
 
-function serverStart(){
-	http.createServer( function (request, response){
+function serverStart(config,project){
+	http.createServer( function (request,response){
 		var date = funcs.getDate('%Y/%m/%d %H:%M:%S');
 		var client_ip = funcs.getClient(request);
 
@@ -43,7 +39,7 @@ function serverStart(){
 		}
 	}).listen( config.port );
 
-	console.log( 'Starting on ' + new Date() + '...\n\nServer running at http://127.0.0.1:' + config.port + '/\n' );
+	console.log( 'Starting on ' + new Date() + '...\n\nServer running at http://127.0.0.1:' + config.port + '/ with pid ' + process.pid + '\n' );
 }
 
 exports.start = serverStart;

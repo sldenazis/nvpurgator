@@ -2,6 +2,8 @@
 	"port" : 8000,
 	"__comment" : "loglevel: 0 - Only errors, 1 - Warnings, 2 - Info, 3 - Debug [default if not specified]",
 	"loglevel" : 3,
+	"__comment" : "Default value for pidfile is '/run/nvpurgator.pid' if not specified",
+	"pidfile" : "/run/nvpurgator.pid",
 	"clients_allow" : [{
 		"ip" : "127.0.0.1"
 	},{
