@@ -1,18 +1,24 @@
 #!/bin/env node
 
-var validate = require('./include/validates');
-var config = require('./conf/config.json');
-var server = require('./server.js');
+/* Load config data  */
+var config = require('./conf/config.json'),
+	project = require('./conf/project.json');
 
-/* Write pid or die. TODO: Remove this from here. */
+/* Load server and validate functions */
+var server = require('./server.js'),
+	validate = require('./include/validates');
+
+/* Validate config.pidfile */
+var pidfile = (config.pidfile || '') || '/run/nvpurgator.pid';
+
 var file = require('fs');
 
-file.writeFile(config.pidfile, process.pid, function(err) {
+file.writeFile(pidfile,process.pid,function(err){
     if(err) {
-        console.log('Unable to write pidfile "' + config.pidfile + '"\nError: ' + err);
+        console.log('Unable to write pidfile \'' + config.pidfile + '\' - ' + err);
     } else {
 		if( validate.config(config) ){
-			server.start();
+			server.start(config,project);
 		}
     }
 });
