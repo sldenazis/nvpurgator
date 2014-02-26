@@ -43,7 +43,7 @@ function serverStart(){
 		}
 	}).listen( config.port );
 
-	console.log( 'Starting on ' + new Date() + '...\n\nServer running at http://127.0.0.1:' + config.port + '/\n' );
+	console.log( 'Starting on ' + new Date() + '...\n\nServer running at http://127.0.0.1:' + config.port + '/ with pid ' + process.pid + '\n' );
 }
 
 exports.start = serverStart;
