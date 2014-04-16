@@ -34,7 +34,8 @@ function _purge(request_data, retry){
 	var request = http.request( request_data, function(response){
 		funcs.notice('[' + date + '] [PURGE "http://' + request_data.headers.Host + request_data.path +
 			'"] on server ' + request_data.hostname + ':' + request_data.port + ' - ' + response.statusCode);
-		funcs.debug('[' + request_data.hostname + ':' + request_data.port + '] HEADERS: ' + JSON.stringify(response.headers));
+		funcs.debug('[' + request_data.hostname + ':' + request_data.port + '] [http://' + request_data.headers.Host +
+			request_data.path +  '] HEADERS (response): ' + JSON.stringify(response.headers));
 		/* Para no saturar el pool de conexiones:
 		 * http://nodejs.org/api/http.html#http_class_http_clientrequest */
 		response.resume();
